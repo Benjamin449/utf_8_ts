@@ -1,0 +1,17 @@
+{
+  "name": "utf-8-ts",
+  "version": "0.1.0",
+  "description": "UTF-8 decoder that accepts only well-formed sequences per WHATWG and Unicode standards",
+  "type": "module",
+  "main": "src/index.js",
+  "exports": "./src/index.js",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test": "node --test"
+  },
+  "keywords": [],
+  "license": "BSD-3-Clause",
+  "dependencies": {}
+}
