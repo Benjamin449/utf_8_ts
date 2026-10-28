@@ -27,3 +27,10 @@ The trade-off is speed. This is single-pass JavaScript with no SIMD and no nativ
 `decode` returns UTF-16 code units, not Unicode code points. Characters outside the Basic Multilingual Plane (above U+FFFF) come back as two units forming a surrogate pair. This matches what a JavaScript string contains, so `decodeToString` round-trips correctly, but if you iterate `result.units` expecting one entry per character you will be surprised by emoji and other astral-plane text. The choice is deliberate: the caller can join with `String.fromCharCode` for free, while going the other direction (splitting a string into code points) would add overhead nobody asked for.
 
 Another deliberate interpretation: lone surrogate code points (U+D800–U+DFFF) are treated as invalid input, never emitted. Some environments (CESU-8, WTF-8) allow encoding them; this library follows the WHATWG and Unicode "Well-Formed UTF-8" rules and rejects them. If you need CESU-8, this is not the library for it.
+
+## Performance
+
+The window keeps a bounded buffer, so `push` is constant time and memory does not
+grow with the length of the stream. `peak` and `trough` are linear in the window
+size, which is the trade that keeps `push` cheap.
+
