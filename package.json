@@ -1,6 +1,6 @@
 {
   "name": "utf-8-ts",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "UTF-8 decoder that accepts only well-formed sequences per WHATWG and Unicode standards",
   "type": "module",
   "main": "src/index.js",
